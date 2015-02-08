@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>propertiesJS</title>
+</head>
+<body>
+  <ul>
+  	<li id="navigator">
+  	  <h2>navigator</h2>
+  	  <ul>
+        <li class="appCodeName">
+        	<strong>appCodeName: </strong>
+        </li>
+        <li class="appName">
+        	<strong>appName:</strong>
+        </li>
+        <li class="appVersion">
+        	<strong>appVersion:</strong>
+        </li>
+        <li class="cookieEnabled">
+        	<strong>cookieEnabled: </strong>
+        </li>
+        <li class="doNotTrack">
+        	<strong>doNotTrack: </strong>
+        </li>
+        <li class="geolocation">
+        	<strong>geolocation: </strong>
+        </li>
+        <li class="hardwareConcurrency">
+        	<strong>hardwareConcurrency: </strong>
+        </li>
+        <li class="language">
+        	<strong>language: </strong>
+        </li>
+        <li class="languages">
+        	<strong>languages: </strong>
+        </li>
+        <li class="maxTouchPoints">
+        	<strong>maxTouchPoints: </strong>
+        </li>
+        <li class="mimeTypes">
+        	<strong>mimeTypes: </strong>
+        </li>
+        <li class="onLine">
+        	<strong>onLine: </strong>
+        </li>
+        <li class="platform">
+        	<strong>platform: </strong>
+        </li>
+        <li class="plugins">
+        	<strong>plugins: </strong>
+        </li>
+        <li class="product">
+        	<strong>product: </strong>
+        </li>
+        <li class="productSub">
+        	<strong>productSub: </strong>
+        </li>
+        <li class="serviceWorker">
+        	<strong>serviceWorker: </strong>
+        </li>
+        <li class="userAgent">
+        	<strong>userAgent: </strong>
+        </li>
+        <li class="vendor">
+        	<strong>vendor: </strong>
+        </li>
+        <li class="vendorSub">
+        	<strong>vendorSub: </strong>
+        </li>
+        <li class="webkitPersistentStorage">
+        	<strong>webkitPersistentStorage: </strong>
+        </li>
+        <li class="webkitTemporaryStorage">
+        	<strong>webkitTemporaryStorage:</strong>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <script>
+    var item = {
+    	navigator: document.getElementById('navigator')
+    }
+    var lis = item.navigator.getElementsByTagName('li')
+    for(var i = 0; i < lis.length; ++i) {
+    	var x = navigator[lis[i].className]
+    	var text = ''
+    	var span = document.createElement('span')
+    	if (x instanceof Array) {
+    		text = '[' + x.join(', ') + ']'
+    		span.appendChild(document.createTextNode(text))
+    	} else if (typeof x !== 'object' || typeof x === null) {
+    		text = x
+    		span.appendChild(document.createTextNode(text))
+    	} else {
+    		var array = []
+    		for (var key in x) {
+    			array.push(key + ': ' + x[key])
+    		}
+    		if (array.length > 0) {
+    		    text = '{<br/>' + array.join(',<br/>') + '<br/>}'
+    		} else {
+    			text = '{}'
+    		}
+    		span.innerHTML = text
+    	}
+    	lis[i].appendChild(span)
+    }
+  </script>
+</body>
+</html>
